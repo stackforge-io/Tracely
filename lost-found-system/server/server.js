@@ -10,6 +10,9 @@ const PORT = 5000;
 app.use(cors());
 app.use(bodyParser.json());
 app.use("/api/reports", reportRoutes);
+const adminRoutes = require("./routes/admin");
+app.use("/api/admin", adminRoutes);
+
 
 app.listen(PORT, () => {
   console.log(`✅ Server is running on http://localhost:${PORT}`);
