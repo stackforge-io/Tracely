@@ -1,0 +1,80 @@
+.room-request-list {
+  max-width: 850px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.filters input {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.request-card {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.status-tag {
+  padding: 3px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  color: white;
+  margin-left: 6px;
+}
+
+.status-tag.pending {
+  background-color: #f0ad4e;
+}
+.status-tag.approved {
+  background-color: #5cb85c;
+}
+.status-tag.delivered {
+  background-color: #0275d8;
+}
+.status-tag.rejected {
+  background-color: #d9534f;
+}
+
+.actions {
+  margin-top: 1rem;
+}
+
+.actions button {
+  margin-right: 10px;
+  padding: 6px 12px;
+  border: none;
+  background: #0077cc;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  margin: 0 4px;
+  padding: 6px 12px;
+  background: #eee;
+  border: none;
+  border-radius: 5px;
+}
+
+.pagination button.active {
+  background: #0077cc;
+  color: white;
+}

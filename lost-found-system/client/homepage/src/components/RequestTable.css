@@ -1,0 +1,22 @@
+.request-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.request-table th, .request-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.status-tag {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.status-tag.pending { background-color: yellow; }
+.status-tag.approved { background-color: lightgreen; }
+.status-tag.delivered { background-color: lightskyblue; }
+.status-tag.rejected { background-color: lightcoral; }

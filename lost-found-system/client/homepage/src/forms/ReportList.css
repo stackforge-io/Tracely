@@ -1,0 +1,88 @@
+.report-list {
+  max-width: 850px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.filters input[type="text"],
+.filters select,
+.date-filters input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.date-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.report-card {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.item-image {
+  width: 100px;
+  margin-top: 10px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}
+
+.status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.status-badge.pending {
+  background-color: #f0ad4e;
+}
+
+.status-badge.approved {
+  background-color: #5cb85c;
+}
+
+.status-badge.delivered {
+  background-color: #0275d8;
+}
+
+.status-badge.rejected {
+  background-color: #d9534f;
+}
+
+.pagination {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.pagination button {
+  margin: 0 4px;
+  padding: 6px 12px;
+  border: none;
+  background-color: #eee;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #0077cc;
+  color: #fff;
+}

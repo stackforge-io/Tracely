@@ -1,0 +1,29 @@
+.App {
+  font-family: Arial;
+  padding: 20px;
+}
+
+.filter-bar {
+  margin: 10px 0;
+}
+
+.request-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.request-table th, .request-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.modal {
+  background: #fff;
+  padding: 20px;
+  position: fixed;
+  top: 10%;
+  left: 25%;
+  width: 50%;
+  border: 2px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
