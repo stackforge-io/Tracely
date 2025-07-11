@@ -1,0 +1,96 @@
+/* Container Styling */
+.found-item-form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+.found-item-form h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form Layout */
+.found-item-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Label Styling */
+.found-item-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #444;
+}
+
+/* Input & Textarea Styling */
+.found-item-form input[type="text"],
+.found-item-form input[type="date"],
+.found-item-form input[type="file"],
+.found-item-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.found-item-form input:focus,
+.found-item-form textarea:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+/* Textarea specifically */
+.found-item-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Submit Button */
+.found-item-form button[type="submit"] {
+  background-color: #4a90e2;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.found-item-form button:hover {
+  background-color: #357ab8;
+}
+
+/* Success & Error Messages */
+.success {
+  text-align: center;
+  color: green;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.error {
+  text-align: center;
+  color: red;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .found-item-form {
+    padding: 20px;
+    margin: 20px;
+  }
+}

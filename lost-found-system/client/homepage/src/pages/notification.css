@@ -1,0 +1,50 @@
+.notification-page {
+  padding: 40px;
+  font-family: "Segoe UI", sans-serif;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+.notification-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.notification-header h2 {
+  font-size: 28px;
+  color: #004080;
+  font-weight: bold;
+}
+
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.notification-card {
+  background: white;
+  border-left: 6px solid #004080;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.notification-card:hover {
+  transform: translateY(-3px);
+}
+
+.notification-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.notification-time {
+  font-size: 14px;
+  color: #777;
+  margin-top: 5px;
+}
