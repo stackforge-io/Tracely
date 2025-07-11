@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "guestName": "John Doe",
+    "room": "302",
+    "item": "Towel",
+    "status": "Approved",
+    "requestTime": "2024-07-10T10:30:00Z"
+  },
+  {
+    "id": 1752145129013,
+    "guestName": "Alice",
+    "room": "202",
+    "item": "Charger",
+    "status": "Approved",
+    "requestTime": "2025-07-10T10:58:49.013Z"
+  }
+]
