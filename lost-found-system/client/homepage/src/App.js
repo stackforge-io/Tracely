@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
-import Notification from "./pages/Notification";
+import Notification from "./pages/notification";
 import FoundItemForm from "./forms/FoundItemForm";
 import LostItemForm from "./forms/LostItemForm";
 import Requestitems from "./forms/Requestitems";

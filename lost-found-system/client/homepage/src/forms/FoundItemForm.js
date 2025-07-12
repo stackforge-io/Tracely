@@ -59,21 +59,35 @@ function FoundItemForm() {
       }
     }
 
-    try {
-      setSubmitted(true);
-      setFormData({
-        itemName: "",
-        description: "",
-        location: "",
-        date: "",
-        room: "",
-        image: null,
-      });
-      setError("");
-    } catch (err) {
-      console.error("Submission error:", err);
-      setError("Something went wrong. Please try again.");
-    }
+  try {
+  const response = await fetch("http://localhost:5000/api/found", {
+    method: "POST",
+    body: payload,
+  });
+
+  if (!response.ok) {
+    throw new Error("Server error");
+  }
+
+  const result = await response.json();
+  console.log("Submitted:", result);
+  setSubmitted(true);
+  setError("");
+
+  // Clear form
+  setFormData({
+    itemName: "",
+    description: "",
+    location: "",
+    date: "",
+    room: "",
+    image: null,
+  });
+} catch (err) {
+  console.error("Submission error:", err);
+  setError("Something went wrong. Please try again.");
+}
+
   };
 
   return (

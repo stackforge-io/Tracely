@@ -1,59 +1,52 @@
+// 📄 RoomRequestList.jsx (React)
 import React, { useEffect, useState } from "react";
- 
-import "./ReportList.css";
+import "./ReportList.css"; // reuse styling
 
 const PAGE_SIZE = 5;
 
-function ReportList({ type }) {
-  const [reports, setReports] = useState([]);
-  const [filtered, setFiltered] = useState([]);
+function RoomRequestList() {
+  const [requests, setRequests] = useState([]);
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
-  const [dateRange, setDateRange] = useState({ from: "", to: "" });
   const [currentPage, setCurrentPage] = useState(1);
 
-  const endpoint = type === "found" ? "found-items" : "lost-items";
-
- 
-
   useEffect(() => {
-    let result = [...reports];
-
-    if (query) {
-      const q = query.toLowerCase();
-      result = result.filter(
-        (item) =>
-          item.itemName?.toLowerCase().includes(q) ||
-          item.location?.toLowerCase().includes(q)
-      );
+    async function fetchRequests() {
+      try {
+        const res = await fetch("http://localhost:5000/api/room-requests");
+        const data = await res.json();
+        setRequests(data);
+      } catch (err) {
+        console.error("Error loading requests:", err);
+      }
     }
+    fetchRequests();
+  }, []);
 
-    if (statusFilter !== "All") {
-      result = result.filter((item) => item.status === statusFilter);
-    }
+  const filtered = requests.filter((r) => {
+    const q = query.toLowerCase();
+    const match =
+      r.guestName.toLowerCase().includes(q) ||
+      r.itemRequested.toLowerCase().includes(q) ||
+      r.room.toLowerCase().includes(q);
+    const matchStatus = statusFilter === "All" || r.status === statusFilter;
+    return match && matchStatus;
+  });
 
-    if (dateRange.from && dateRange.to) {
-      result = result.filter((item) => {
-        const itemDate = new Date(item.date);
-        return itemDate >= new Date(dateRange.from) && itemDate <= new Date(dateRange.to);
-      });
-    }
-
-    setFiltered(result);
-    setCurrentPage(1);
-  }, [query, reports, statusFilter, dateRange]);
-
-  const paginated = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+  const paginated = filtered.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE
+  );
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
 
   return (
     <div className="report-list">
-      <h2>📥 {type === "found" ? "Found" : "Lost"} Reports</h2>
+      <h2>🛎️ Room Item Requests</h2>
 
       <div className="filters">
         <input
           type="text"
-          placeholder="Search item/location"
+          placeholder="Search guest/item/room"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
@@ -65,43 +58,19 @@ function ReportList({ type }) {
           <option>Delivered</option>
           <option>Rejected</option>
         </select>
-
-        <div className="date-filters">
-          <label>From:</label>
-          <input
-            type="date"
-            value={dateRange.from}
-            onChange={(e) => setDateRange({ ...dateRange, from: e.target.value })}
-          />
-          <label>To:</label>
-          <input
-            type="date"
-            value={dateRange.to}
-            onChange={(e) => setDateRange({ ...dateRange, to: e.target.value })}
-          />
-        </div>
       </div>
 
-      {paginated.map((item) => (
-        <div key={item._id} className="report-card">
-          <h3>{item.itemName}</h3>
-          <p><strong>Description:</strong> {item.description}</p>
-          <p><strong>Location:</strong> {item.location}</p>
-          <p><strong>Date:</strong> {item.date}</p>
-          {item.room && <p><strong>Room:</strong> {item.room}</p>}
-          {item.reportedBy && <p><strong>Reported By:</strong> {item.reportedBy}</p>}
-          {item.imageUrl && (
-            <img src={item.imageUrl} alt="Item" className="item-image" />
-          )}
-          {item.status && (
-            <span className={`status-badge ${item.status.toLowerCase()}`}>
-              {item.status}
-            </span>
-          )}
+      {paginated.map((req) => (
+        <div key={req.id} className="report-card">
+          <h3>{req.itemRequested}</h3>
+          <p><strong>Guest:</strong> {req.guestName}</p>
+          <p><strong>Room:</strong> {req.room}</p>
+          <p><strong>Note:</strong> {req.note}</p>
+          <p><strong>Status:</strong> {req.status}</p>
+          <p><strong>Date:</strong> {req.createdAt?.split("T")[0]}</p>
         </div>
       ))}
 
-      {/* Pagination Controls */}
       {totalPages > 1 && (
         <div className="pagination">
           {Array.from({ length: totalPages }, (_, i) => (
@@ -119,4 +88,4 @@ function ReportList({ type }) {
   );
 }
 
-export default  ReportList;
+export default RoomRequestList;
